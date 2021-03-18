@@ -9,7 +9,7 @@ before_action :set_patient, only: [:show, :destroy]
     end
 
     def show
-      render json: {patient:@patient}
+      render json: {patient:@patient, doctors: @patient.get_doctors_with_appointment_info}
     end
 
     def create
