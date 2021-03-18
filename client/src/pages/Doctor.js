@@ -1,9 +1,24 @@
+import { Link, useParams } from "react-router-dom";
+import AxiosContainer from "../components/AxiosContainer";
+import Card from "../components/Card";
+import List from "../components/List";
+import StringifyJSON from "../components/StringifyJSON";
+import useAxiosOnMount from "../hooks/useAxiosOnMount";
 
-const Doctor = () => {
-  return(
-    <div>
-      <h1>Doctor Page</h1>
-    </div>
+
+
+
+const Doctor = (props)=> {
+  const {id} = useParams()
+
+  const {data, loading, error} = useAxiosOnMount(`/api/doctors/${id}`)
+
+  console.log(data)
+  return (
+    <AxiosContainer loading={loading} error={error}>
+      {/* <List name={'Doctor'} data={data} /> */}
+      <StringifyJSON json={data}/>
+    </AxiosContainer>
   )
 }
 
