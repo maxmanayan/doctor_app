@@ -17,6 +17,21 @@ const NavBar = () => {
           About
         </Menu.Item>
       </Link>
+      <Link to='/doctors'>
+        <Menu.Item active={pathname == '/doctors'}>
+          Doctors
+        </Menu.Item>
+      </Link>
+      <Link to='/appointments'>
+        <Menu.Item active={pathname == '/appointments'}>
+          Appointments
+        </Menu.Item>
+      </Link>
+      <Link to='/patients'>
+        <Menu.Item active={pathname == '/patients'}>
+          Patients
+        </Menu.Item>
+      </Link>
       <Link to='/componentDemo'>
         <Menu.Item active={pathname == '/componentDemo'}>
           Component Demo

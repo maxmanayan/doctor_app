@@ -1,3 +1,5 @@
+import StringifyJSON from "./StringifyJSON";
+
 const List = (props) => {
   const { name, data, renderData } = props
 
@@ -5,7 +7,7 @@ const List = (props) => {
     <>
       <h1>{name}</h1>
       <div>
-        {data.map( d => renderData(d))}
+        {data.map( d => renderData ? renderData(d) : <StringifyJSON json={d}/>)}
       </div>
     </>
   )

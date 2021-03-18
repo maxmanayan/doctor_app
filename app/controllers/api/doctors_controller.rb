@@ -35,4 +35,3 @@ class Api::DoctorsController < ApplicationController
     end
 end
 
-end
