@@ -1,5 +1,5 @@
 class Api::PatientsController < ApplicationController
-end
+
 
 before_action :set_patient, only: [:show, :destroy]
 
