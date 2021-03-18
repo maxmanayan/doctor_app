@@ -3,7 +3,8 @@ class Api::AppointmentsController < ApplicationController
   before_action :get_appointment, only: [:show, :update, :destroy]
   
   def index
-    render json: Appointment.all
+    # appointments = Appointment.with_doctors_patients
+    render json: Appointment.with_doctors_patients
   end
 
 
