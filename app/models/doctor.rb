@@ -9,4 +9,9 @@ class Doctor < ApplicationRecord
       {patient: patient, date: date, description: description }
     end
   end
+
+
+  def get_unassociated_patients
+    Patient.all - self.patients
+  end
 end

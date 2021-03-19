@@ -18,8 +18,8 @@ end
 
   # @patient = Patient.create(name: Faker::Name.name, age: Faker::Number.within(range: 1..100)) 
 
-  6.times do |i|
-    Appointment.create(date: Faker::Date.forward(days: 23), description: Faker::Movies::StarWars.wookiee_sentence, doctor_id: @doctor.id, patient_id: i)
+  5.times do |i|
+    Appointment.create(date: Faker::Date.forward(days: 23), description: Faker::Movies::StarWars.wookiee_sentence, doctor_id: @doctor.id, patient_id: (i+1))
   end
 end
 
