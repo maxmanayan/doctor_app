@@ -28,6 +28,14 @@ const Patients = (props)=> {
     }
   }
 
+  const deletePatient = async (id) => {
+    try {
+      let res = await axios.delete(`/api/patients/${id}`)
+      window.location.reload()
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   return (
     <AxiosContainer loading={loading} error={error}>
@@ -55,11 +63,13 @@ const Patients = (props)=> {
 
       <List name={'Patients'} data={data} renderData={(patient) => {
         return(
-        <Link to={`/patients/${patient.id}`}>
           <Card header={patient.name}>
             <p>Age: {patient.age}</p>
+            <Link to={`/patients/${patient.id}`}>
+              <p>View Patient</p>
+            </Link>
+            <Button onClick={() => deletePatient(patient.id)}>Delete</Button>
           </Card>
-        </Link>
       )}
       }/>
     </AxiosContainer>
