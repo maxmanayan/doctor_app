@@ -29,7 +29,7 @@ before_action :set_patient, only: [:show, :destroy]
     private
 
     def patient_params 
-      params.require(:patient).permit(:name)
+      params.require(:patient).permit(:name, :age)
     end
 
     def set_patient
