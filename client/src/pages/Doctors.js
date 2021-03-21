@@ -7,6 +7,8 @@ import {Form} from "semantic-ui-react";
 import List from "../components/List";
 import useAxiosOnMount from "../hooks/useAxiosOnMount";
 import { useState } from "react";
+import ToggleButton from "../components/ToggleButton";
+import EditDoctorForm from "./EditDoctorForm";
 
 
 
@@ -15,6 +17,7 @@ const Doctors = (props)=> {
   const [show, setShow]  = useState(false)
   const[name, setName] = useState('')
   
+  // const [updateShow, setUpdateShow] = useState(false)
   
   const {data, loading, error} = useAxiosOnMount('/api/doctors')
 
@@ -27,7 +30,7 @@ const Doctors = (props)=> {
     }
   }
 
-const deleteDoctor = async (id) => {
+  const deleteDoctor = async (id) => {
   try {
     let res = await axios.delete(`/api/doctors/${id}`)
     window.location.reload()
@@ -36,7 +39,9 @@ const deleteDoctor = async (id) => {
   }
   }
 
-
+  // const toggleUpdateForm = (id) => {
+  //   doctor.id == id ? setUpdateShow(!updateShow) : setUpdateShow(false)
+  // }
   
   return (
     <AxiosContainer loading={loading} error={error}>
@@ -62,8 +67,12 @@ const deleteDoctor = async (id) => {
             <Link to={`/doctors/${doctor.id}`}>
                 <p>View Doctor</p>
             </Link>
-            <Button>Update</Button>
             <Button onClick={() => deleteDoctor(doctor.id)}>Delete</Button>
+            <ToggleButton setTrue={true} setFalse={false} buttonText={'Update'} renderComponent={
+              <EditDoctorForm name={doctor.name} id={doctor.id}/>
+            }/>
+            {/* <Button onClick={()=>toggleUpdateForm(doctor.id)}>Update</Button> */}
+            {/* {updateShow && <p>Update this Doctor</p>} */}
           </Card>
           
       )}

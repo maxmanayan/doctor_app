@@ -1,5 +1,5 @@
 class Api::DoctorsController < ApplicationController
-  before_action :set_doctor, only: [:show, :destroy]
+  before_action :set_doctor, only: [:show, :update, :destroy]
 
   def index
     doctors = Doctor.all
@@ -14,6 +14,14 @@ class Api::DoctorsController < ApplicationController
     @doctor = Doctor.new(doctor_params)
 
     if @doctor.save
+      render json: @doctor
+    else
+      render json: {error: @doctor.errors}, status: 422
+    end
+  end
+
+  def update 
+    if @doctor.update(doctor_params)
       render json: @doctor
     else
       render json: {error: @doctor.errors}, status: 422
