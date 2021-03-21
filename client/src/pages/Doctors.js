@@ -59,10 +59,11 @@ const deleteDoctor = async (id) => {
       <List name={'Doctors'} data={data} renderData={(doctor) => {
         return(
           <Card header={doctor.name}>
-        <Link to={`/doctors/${doctor.id}`}>
-            <p>View Doctor</p>
-        </Link>
-          <Button onClick={() => deleteDoctor(doctor.id)}>Delete</Button>
+            <Link to={`/doctors/${doctor.id}`}>
+                <p>View Doctor</p>
+            </Link>
+            <Button>Update</Button>
+            <Button onClick={() => deleteDoctor(doctor.id)}>Delete</Button>
           </Card>
           
       )}
