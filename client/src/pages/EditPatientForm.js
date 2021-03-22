@@ -2,14 +2,16 @@ import axios from "axios";
 import { useState } from "react";
 import { Button, Form } from "semantic-ui-react";
 
-const EditDoctorForm = ({name: defaultName, id}) => {
+const EditPatientForm = ({name: defaultName, age: defaultAge, id}) => {
   const [name, setName] = useState(defaultName)
+  const [age, setAge] = useState(defaultAge)
 
   const handleSubmit = async () => {
     try {
       console.log(id)
-      let res = await axios.put(`/api/doctors/${id}`, {name})
-      setName(res.data)
+      let res = await axios.put(`/api/patients/${id}`, {name, age})
+      setName(res.data.name)
+      setAge(res.data.age)
       window.location.reload()
     } catch (err) {
       console.log(err)
@@ -24,6 +26,10 @@ const EditDoctorForm = ({name: defaultName, id}) => {
             <label>Name</label>
             <input value={name} onChange={(e)=>setName(e.target.value)} placeholder='Name'/>
           </Form.Field>
+          <Form.Field>
+            <label>Age</label>
+            <input value={age} onChange={(e)=>setAge(e.target.value)} placeholder='Age'/>
+          </Form.Field>
           <Button type='submit'>Submit</Button>
         </Form>
     </>
@@ -31,4 +37,4 @@ const EditDoctorForm = ({name: defaultName, id}) => {
 }
 
 
-export default EditDoctorForm;
+export default EditPatientForm;

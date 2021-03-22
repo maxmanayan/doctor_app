@@ -7,6 +7,8 @@ import List from "../components/List";
 import useAxiosOnMount from "../hooks/useAxiosOnMount";
 import {Form} from "semantic-ui-react";
 import axios from "axios";
+import ToggleButton from "../components/ToggleButton";
+import EditPatientForm from "./EditPatientForm";
 
 
 
@@ -69,6 +71,9 @@ const Patients = (props)=> {
               <p>View Patient</p>
             </Link>
             <Button onClick={() => deletePatient(patient.id)}>Delete</Button>
+            <ToggleButton setTrue={true} setFalse={false} buttonText={'Update'} renderComponent={
+              <EditPatientForm name={patient.name} age={patient.age} id={patient.id} />
+            }/>
           </Card>
       )}
       }/>

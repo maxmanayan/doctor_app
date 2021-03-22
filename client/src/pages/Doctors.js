@@ -17,7 +17,6 @@ const Doctors = (props)=> {
   const [show, setShow]  = useState(false)
   const[name, setName] = useState('')
   
-  // const [updateShow, setUpdateShow] = useState(false)
   
   const {data, loading, error} = useAxiosOnMount('/api/doctors')
 
@@ -39,9 +38,6 @@ const Doctors = (props)=> {
   }
   }
 
-  // const toggleUpdateForm = (id) => {
-  //   doctor.id == id ? setUpdateShow(!updateShow) : setUpdateShow(false)
-  // }
   
   return (
     <AxiosContainer loading={loading} error={error}>
@@ -71,8 +67,6 @@ const Doctors = (props)=> {
             <ToggleButton setTrue={true} setFalse={false} buttonText={'Update'} renderComponent={
               <EditDoctorForm name={doctor.name} id={doctor.id}/>
             }/>
-            {/* <Button onClick={()=>toggleUpdateForm(doctor.id)}>Update</Button> */}
-            {/* {updateShow && <p>Update this Doctor</p>} */}
           </Card>
           
       )}
